@@ -9,3 +9,4 @@ get request from front end containing the team and the year (and eventually auth
 use db.js connect () to connect to server, 
 
 return data for that team and year to the front end. 
+
