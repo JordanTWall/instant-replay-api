@@ -1,0 +1,150 @@
+{
+  "get": "games/events",
+  "parameters": {
+    "id": "1986"
+  },
+  "errors": [],
+  "results": 7,
+  "response": [
+    {
+      "quarter": "First",
+      "minute": "4:46",
+      "team": {
+        "id": 4,
+        "name": "New York Giants",
+        "logo": "https://media.api-sports.io/american-football/teams/4.png"
+      },
+      "player": {
+        "id": 5842,
+        "name": "Rashad Jennings",
+        "image": "https://media.api-sports.io/american-football/players/5842.png"
+      },
+      "type": "TD",
+      "comment": "Rashad Jennings 3 Yd Run (Josh Brown Kick)",
+      "score": {
+        "home": 7,
+        "away": 0
+      }
+    },
+    {
+      "quarter": "First",
+      "minute": "1:28",
+      "team": {
+        "id": 4,
+        "name": "New York Giants",
+        "logo": "https://media.api-sports.io/american-football/teams/4.png"
+      },
+      "player": {
+        "id": 5843,
+        "name": "Josh Brown",
+        "image": "https://media.api-sports.io/american-football/players/5843.png"
+      },
+      "type": "FG",
+      "comment": "Josh Brown 20 Yd Field Goal",
+      "score": {
+        "home": 10,
+        "away": 0
+      }
+    },
+    {
+      "quarter": "Second",
+      "minute": "3:16",
+      "team": {
+        "id": 25,
+        "name": "Miami Dolphins",
+        "logo": "https://media.api-sports.io/american-football/teams/25.png"
+      },
+      "player": {
+        "id": 5199,
+        "name": "Andrew Franks",
+        "image": "https://media.api-sports.io/american-football/players/5199.png"
+      },
+      "type": "FG",
+      "comment": "Andrew Franks 49 Yd Field Goal",
+      "score": {
+        "home": 10,
+        "away": 3
+      }
+    },
+    {
+      "quarter": "Second",
+      "minute": "0:05",
+      "team": {
+        "id": 25,
+        "name": "Miami Dolphins",
+        "logo": "https://media.api-sports.io/american-football/teams/25.png"
+      },
+      "player": {
+        "id": 533,
+        "name": "Damien Williams",
+        "image": "https://media.api-sports.io/american-football/players/533.png"
+      },
+      "type": "TD",
+      "comment": "Damien Williams 5 Yd Run (Andrew Franks Kick)",
+      "score": {
+        "home": 10,
+        "away": 10
+      }
+    },
+    {
+      "quarter": "Second",
+      "minute": "1:01",
+      "team": {
+        "id": 25,
+        "name": "Miami Dolphins",
+        "logo": "https://media.api-sports.io/american-football/teams/25.png"
+      },
+      "player": {
+        "id": 5246,
+        "name": "Matt Hazel",
+        "image": "https://media.api-sports.io/american-football/players/5246.png"
+      },
+      "type": "TD",
+      "comment": "Matt Hazel 51 Yd pass from Matt Moore (Andrew Franks Kick)",
+      "score": {
+        "home": 10,
+        "away": 17
+      }
+    },
+    {
+      "quarter": "Third",
+      "minute": "6:48",
+      "team": {
+        "id": 25,
+        "name": "Miami Dolphins",
+        "logo": "https://media.api-sports.io/american-football/teams/25.png"
+      },
+      "player": {
+        "id": 4770,
+        "name": "Marshall Koehn",
+        "image": "https://media.api-sports.io/american-football/players/4770.png"
+      },
+      "type": "FG",
+      "comment": "Marshall Koehn 28 Yd Field Goal",
+      "score": {
+        "home": 10,
+        "away": 20
+      }
+    },
+    {
+      "quarter": "Fourth",
+      "minute": "1:59",
+      "team": {
+        "id": 25,
+        "name": "Miami Dolphins",
+        "logo": "https://media.api-sports.io/american-football/teams/25.png"
+      },
+      "player": {
+        "id": 4384,
+        "name": "Thomas Duarte",
+        "image": "https://media.api-sports.io/american-football/players/4384.png"
+      },
+      "type": "TD",
+      "comment": "Thomas Duarte 16 Yd pass from Zac Dysert (Marshall Koehn Kick)",
+      "score": {
+        "home": 10,
+        "away": 27
+      }
+    }
+  ]
+}
