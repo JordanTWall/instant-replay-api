@@ -6,6 +6,7 @@ dotenv.config();
 const RAPID_API_KEY = process.env.RAPID_API_KEY;
 
 export const fetchGameEvents = async (gameId: string) => {
+  console.log(`Querying id: ${gameId}`);
   const options = {
     method: 'GET',
     url: 'https://api-american-football.p.rapidapi.com/games/events',

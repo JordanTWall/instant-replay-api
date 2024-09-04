@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.get('/games', async (req: Request, res: Response) => {
   try {
-    const { teamName, season } = req.query as { teamName: string; season: string };
-    const games = await fetchGames(teamName, season);
+    const { teamSlug, season } = req.query as { teamSlug: string; season: string };
+    const games = await fetchGames(teamSlug, season);
     res.json(games);
   } catch (error) {
     console.error('Error processing data:', error);

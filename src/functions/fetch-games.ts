@@ -1,39 +1,25 @@
-// src/functions/fetchgames.ts
 import { connect } from './db';
+import util from 'util';
 
-export async function fetchGames(teamName: string, season: string) {
+export async function fetchGames(teamSlug: string, season: string) {
   try {
-    const collectionName = teamName.replace(/\s+/g, '_');
-    const db = await connect();
-    const collection = db.collection(collectionName);
+    // Convert the teamSlug to collectionName format
+    let collectionName = teamSlug
+      .replace(/_/g, ' ') // Replace underscores with spaces
+      .replace(/\b\w/g, char => char.toUpperCase()) // Capitalize first letter of each word
+      .replace(/\s+/g, '_') // Replace spaces with underscores
+      .replace(/49Ers/i, '49ers'); // Handle special case for 49ers
 
     console.log(`Querying collection: ${collectionName} for season: ${season}`);
 
-    // Use the aggregation pipeline to project only the needed fields
-    const result = await collection.aggregate([
-      { $match: { 'parameters.season': season } },
-      { $unwind: '$games' },
-      {
-        $project: {
-          _id: 0,
-          gameId: '$games.game.id',
-          gameStage: '$games.game.stage',
-          gameWeek: '$games.game.week',
-          gameDate: '$games.game.date.date',
-          homeTeamId: '$games.teams.home.id',
-          homeTeamName: '$games.teams.home.name',
-          homeTeamLogo: '$games.teams.home.logo',
-          awayTeamId: '$games.teams.away.id',
-          awayTeamName: '$games.teams.away.name',
-          awayTeamLogo: '$games.teams.away.logo',
-          homeTeamScore: '$games.scores.home.total',
-          awayTeamScore: '$games.scores.away.total',
-        },
-      },
-    ]).toArray();
+    const db = await connect();
+    const collection = db.collection(collectionName);
+
+    // Simply match the season and return the raw documents
+    const result = await collection.find({ 'parameters.season': season }).toArray();
 
     if (!result || result.length === 0) {
-      console.log(`No games found for ${teamName} in season ${season}`);
+      console.log(`No games found for ${collectionName} in season ${season}`);
       return [];
     }
 
