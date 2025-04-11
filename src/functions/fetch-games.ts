@@ -7,18 +7,20 @@ export async function fetchGames(teamName: string, season: string) {
     }
 
     const collectionName = teamName.replace(/\s+/g, '_');
-
     const db = await connect();
+
     if (!db) {
       throw new Error('Failed to connect to database');
     }
 
+    console.log(`📂 Connected to database: ${db.databaseName}`);
     const collection = db.collection(collectionName);
+
     if (!collection) {
       throw new Error(`Collection "${collectionName}" not found`);
     }
 
-    console.log(`Querying collection: ${collectionName} for season: ${season}`);
+    console.log(`🔍 Querying collection: ${collectionName} for season: ${season}`);
 
     const result = await collection.aggregate([
       { $match: { 'parameters.season': season } },
@@ -43,10 +45,11 @@ export async function fetchGames(teamName: string, season: string) {
     ]).toArray();
 
     if (!result || result.length === 0) {
-      console.warn(`No games found for ${teamName} in season ${season}`);
+      console.warn(`⚠️ No games found for ${teamName} in season ${season}`);
       return [];
     }
 
+    console.log(`✅ Found ${result.length} games for ${teamName} in ${season}`);
     return result;
   } catch (error: any) {
     console.error(`❌ fetchGames failed for team "${teamName}" season "${season}":`, error.message);

@@ -22,5 +22,5 @@ export async function connect() {
     connected = true;
     console.log("connected to mongodb")
   }
-  return client.db('nfl_games_by_year');
+  return client.db();
 }
