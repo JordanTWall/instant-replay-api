@@ -1,15 +1,25 @@
-// src/functions/fetchgames.ts
 import { connect } from './db';
 
 export async function fetchGames(teamName: string, season: string) {
   try {
+    if (!teamName || !season) {
+      throw new Error('Missing required parameters: teamName or season');
+    }
+
     const collectionName = teamName.replace(/\s+/g, '_');
+
     const db = await connect();
+    if (!db) {
+      throw new Error('Failed to connect to database');
+    }
+
     const collection = db.collection(collectionName);
+    if (!collection) {
+      throw new Error(`Collection "${collectionName}" not found`);
+    }
 
     console.log(`Querying collection: ${collectionName} for season: ${season}`);
 
-    // Use the aggregation pipeline to project only the needed fields
     const result = await collection.aggregate([
       { $match: { 'parameters.season': season } },
       { $unwind: '$games' },
@@ -33,13 +43,13 @@ export async function fetchGames(teamName: string, season: string) {
     ]).toArray();
 
     if (!result || result.length === 0) {
-      console.log(`No games found for ${teamName} in season ${season}`);
+      console.warn(`No games found for ${teamName} in season ${season}`);
       return [];
     }
 
     return result;
-  } catch (error) {
-    console.error('Error fetching games:', error);
-    throw error;
+  } catch (error: any) {
+    console.error(`❌ fetchGames failed for team "${teamName}" season "${season}":`, error.message);
+    return null;
   }
 }

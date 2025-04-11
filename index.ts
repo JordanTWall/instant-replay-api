@@ -2,10 +2,10 @@
 import express from 'express';
 import path from 'path';
 import cors from 'cors';
-import gamesInfoRoutes from './routes/games-info';
+import gamesInfoRoutes from './src/routes/games-info';
 
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());

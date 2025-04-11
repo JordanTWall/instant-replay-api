@@ -11,7 +11,7 @@ router.get('/games', async (req: Request, res: Response) => {
     res.json(games);
   } catch (error) {
     console.error('Error processing data:', error);
-    res.status(500).json({ message: 'Error processing data' });
+    res.status(500).json({ message: 'Error processing data', error: String(error) });
   }
 });
 
@@ -27,7 +27,7 @@ router.get('/events', async (req: Request, res: Response) => {
     res.json(events);
   } catch (error) {
     console.error('Error processing data:', error);
-    res.status(500).json({ message: 'Error processing data' });
+    res.status(500).json({ message: 'Error processing data', error: String (error) });
   }
 });
 
